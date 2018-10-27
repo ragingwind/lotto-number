@@ -1,21 +1,18 @@
-# lotto-number [![Build Status](https://travis-ci.org/<%= githubUsername %>/lotto-cli.svg?branch=master)](https://travis-ci.org/<%= githubUsername %>/lotto-cli)
+# lotto-number
 
->
+> Make a fortune by command
 
-## Install
+## Install & Usage
 
 ```
-$ npm install lotto-cli
-$ npx ~~~~
+$ npx lotto-number
+$ npx lotto-number -- 6 50
 ```
 
-## Usage
+## Install & Usage
 
-```js
-const <%= camelModuleName %> = require('lotto-cli');
-
-<%= camelModuleName %>('unicorns');
-//=> 'unicorns & rainbows'
+```
+$ npm install lotto-number
 ```
 
 ## License
