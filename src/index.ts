@@ -1,5 +1,5 @@
 // code snippets borrows from https://stackoverflow.com/questions/33468028/lotto-generator-javascript
-export default function (draw: number = 6, ballcount: number = 45) {
+export function generateNumber(draw: number = 6, ballcount: number = 45): Array<number> {
 	const arr = Array(ballcount).fill(0).map((_, i) => i);
 	const rand = (from, to) => Math.floor(Math.random() * (to - from + 1)) + from;
 
@@ -9,4 +9,9 @@ export default function (draw: number = 6, ballcount: number = 45) {
 	}
 
 	return arr.slice(0, draw);
+}
+
+export function normalizeNumber (value: any, max: number, init: number): number {
+	const number = Number.parseInt(value || init);
+	return (isNaN(number) || number <= 0 || number > max) ? init : number;
 }

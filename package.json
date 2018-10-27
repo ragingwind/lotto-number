@@ -1,7 +1,7 @@
 {
 	"name": "lotto-number",
 	"version": "1.0.0",
-	"description": "",
+	"description": "Make a fortune by command",
 	"license": "MIT",
 	"repository": "ragingwind/lotto-number",
 	"author": {
@@ -25,9 +25,6 @@
 		"!dist/test*.js"
 	],
 	"keywords": [],
-	"dependencies": {
-		"meow": "^3.7.0"
-	},
 	"devDependencies": {
 		"@types/core-js": "^0.9.41",
 		"@types/node": "^8.0.2",
