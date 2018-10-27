@@ -1,0 +1,37 @@
+{
+	"name": "lotto-number",
+	"version": "0.0.0",
+	"description": "",
+	"license": "MIT",
+	"repository": "ragingwind/lotto-number",
+	"author": {
+		"name": "Jimmy Moon",
+		"email": "ragingwind@gmail.com",
+		"url": "http://ragingwind.me"
+	},
+	"bin": {
+		"chrome": "./dist/cli.js"
+	},
+	"engines": {
+		"node": ">=6"
+	},
+	"scripts": {
+		"test": "tsc && ava ./dist/test*.js",
+		"build": "tsc",
+		"prepublishOnly": "npm run build"
+	},
+	"files": [
+		"dist",
+		"!dist/test*.js"
+	],
+	"keywords": [],
+	"dependencies": {
+		"meow": "^3.7.0"
+	},
+	"devDependencies": {
+		"@types/core-js": "^0.9.41",
+		"@types/node": "^8.0.2",
+		"typescript": "^2.3.4",
+		"ava": "^0.18.2"
+	}
+}
