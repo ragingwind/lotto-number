@@ -8,7 +8,7 @@ export function generateNumber(draw: number = 6, ballcount: number = 45): Array<
 		[arr[r], arr[i]] = [arr[i], arr[r]];
 	}
 
-	return arr.slice(0, draw);
+	return arr.slice(0, draw).sort((a, b) => a - b);
 }
 
 export function normalizeNumber (value: any, max: number, init: number): number {
