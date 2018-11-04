@@ -1,39 +1,23 @@
-import test from 'ava'
+import test from 'ava';
 import {generateNumber, normalizeNumber} from '.';
 
-function isSortedList(list: number[]) {
-  const recursiveSortCheck = (head: number, rest: number[]) => {
-    if (rest.length === 0) return true;
-    if (head > rest[0]) return false;
-
-    const [nextHead, ...nextRest] = rest;
-    return recursiveSortCheck(nextHead, nextRest);
-  }
-
-  const [head, ...rest] = list;
-  return recursiveSortCheck(head, rest);
+function isSorted(current: number, index: number, list: number[]) {
+	const nextEl: number | undefined = list[index + 1];
+	return typeof nextEl === "undefined" || current < nextEl;
 }
 
-test('isSortedList', async t => {
-  const sortedList = [1, 2, 3, 4, 5, 6]
-  const notSortedList = [7, 10, 2, 58, 1, 40]
-
-  t.is(isSortedList(sortedList), true);
-  t.is(isSortedList(notSortedList), false);
-})
-
-
 test('generateNumber', async t => {
-  const defaultLength = generateNumber();
-  const longerNumbers = generateNumber(10);
-  const lonegerNumbersWithLimit = generateNumber(10, 45);
+	const defaultLength = generateNumber();
+	const longerNumbers = generateNumber(10);
+	const lonegerNumbersWithLimit = generateNumber(10, 45);
 
-  t.is(isSortedList(defaultLength), true);
-  t.is(isSortedList(longerNumbers), true);
-  t.is(isSortedList(lonegerNumbersWithLimit), true);
-
+	t.true(defaultLength.every(isSorted));
 	t.is(defaultLength.length, 6);
+
+	t.true(longerNumbers.every(isSorted));
 	t.is(longerNumbers.length, 10);
+
+	t.true(lonegerNumbersWithLimit.every(isSorted));
 	t.is(lonegerNumbersWithLimit.length, 10);
 });
 
