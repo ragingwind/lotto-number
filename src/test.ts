@@ -2,23 +2,20 @@ import test from 'ava';
 import {generateNumber, normalizeNumber} from '.';
 
 function isSorted(current: number, index: number, list: number[]) {
-	const nextEl: number | undefined = list[index + 1];
-	return typeof nextEl === "undefined" || current < nextEl;
+	const next: number | undefined = list[index + 1];
+	return typeof next === "undefined" || current < next;
 }
 
-test('generateNumber', async t => {
-	const defaultLength = generateNumber();
-	const longerNumbers = generateNumber(10);
-	const lonegerNumbersWithLimit = generateNumber(10, 45);
+test('Generated numbers should be sorted in ascending order', async t => {
+	t.true(generateNumber().every(isSorted));
+	t.true(generateNumber(10).every(isSorted));
+	t.true(generateNumber(10, 45).every(isSorted));
+});
 
-	t.true(defaultLength.every(isSorted));
-	t.is(defaultLength.length, 6);
-
-	t.true(longerNumbers.every(isSorted));
-	t.is(longerNumbers.length, 10);
-
-	t.true(lonegerNumbersWithLimit.every(isSorted));
-	t.is(lonegerNumbersWithLimit.length, 10);
+test('Generated numbers should have correct length by the first argument', async t => {
+	t.is(generateNumber().length, 6);
+	t.is(generateNumber(10).length, 10);
+	t.is(generateNumber(10, 45).length, 10);
 });
 
 test('normalizeNumber', async t => {
